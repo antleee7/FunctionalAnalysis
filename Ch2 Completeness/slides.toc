@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{The Banach-Steinhaus theorem}{2}{0}{1}
+\beamer@sectionintoc {2}{Limits of continuous linear maps}{8}{0}{2}
+\beamer@sectionintoc {3}{The Open Mapping Theorem}{17}{0}{3}
+\beamer@sectionintoc {4}{The Closed Graph Theorem}{25}{0}{4}
+\beamer@sectionintoc {5}{Bilinear Mappings}{29}{0}{5}

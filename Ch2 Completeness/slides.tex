@@ -1,0 +1,238 @@
+\documentclass{beamer}
+
+\usetheme{CambridgeUS}  % Select your favorite theme
+
+
+\title{Completeness}
+\author{Chapter 2}
+\institute{Functional Analysis}
+\date{\today}
+
+\begin{document}
+
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{The Banach-Steinhaus theorem}
+
+\begin{frame}
+\frametitle{The Banach-Steinhaus theorem}
+
+\begin{theorem} (Banach-Steinhaus) Suppose $X,Y$ are TVSs. Let $\Gamma$ be a collection of continuous linear maps from $X \to Y$. Let $B$ be the set of all $x \in X$ such that $\Gamma(x) = \{\Lambda x\mid \Lambda \in \Gamma\}$ are bounded in $Y$. Now if $B$ is of the second category in $X$, then $B = X$ and $\Gamma$ is equicontinuous.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The Banach-Steinhaus theorem}
+
+\begin{proof}\renewcommand{\qedsymbol}{} Pick balanced neighborhoods\footnote{Recall that $S$ is balanced if $aS \subset S$ for all scalars $|a| \leq 1$. Also recall that every TVS has a balanced local base, so it is enough to prove for balanced neighborhoods of $0_Y$.} $W, U$ of $0_Y$ such that $\overline{U} + \overline{U} \subset W$.\footnote{Why is this possible? Need regularity condition?} Put $E =  \bigcap_{\Lambda \in \Gamma}\Lambda^{-1}(\overline{U})$. Now if $x \in B$, then by definition $\Gamma(x)$ must be bounded so $\Gamma(x) \subset nU$ for some $n$. This implies $x \in nE$.\footnote{Direct proof?} Consequently, $B \subset \bigcup_n nE$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Banach-Steinhaus theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+Since $B$ is of the second category, at least one of the $nE$ must also be of the second category.\footnote{Suppose all $nE$ are not of the second category, i.e. of the first category. Then by properties on page 43, $\bigcup_n nE$ must also be of the first category, and cannot contain $B$ as a subset.} Also recall that $x \mapsto nx$ is a homeomorphism of $X$ to $X$, from which it follows that $E$ is itself of the second category in $X$. By definition of $E$, $E$ is closed, thus must have an interior point. This is because any closed set whose interior is empty is of the first category.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Banach-Steinhaus theorem}
+\begin{proof}
+Pick $x \in E^\circ$. Consider the translated set $x -E$. Since the interior is nonempty, and contains zero, it contains a neighborhood $V$ of $0_X$. From $V \subset x -E$ deduce $\Lambda(V) \subset \Lambda x - \Lambda(E) \subset \overline{U} - \overline{U}$ considering the definition of $E$. Since by assumption $U$ was balanced, we have that $\Lambda(V) \subset W$ for every $\Lambda \in \Gamma$. Thus, the collection $\Gamma$ is equicontinuous.
+\end{proof}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A corollary}
+
+\begin{theorem} If $\Gamma$ is a collection of continuous linear maps from an $F$-space $X$ into a TVS $Y$, and if the $\Gamma(x)$ are bounded in $Y$ for every $x \in X$, then $\Gamma$ is equicontinuous.
+\end{theorem}
+\begin{proof} Since $F$-spaces are of the second category (spaces such that their topology is induced by a complete invariant metric), $B = X$ is of the second category and the proof follows. \end{proof}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A special yet familiar case}
+
+Let $X$ and $Y$ be Banach spaces, and suppose that $\Gamma(x)$ is bounded, i.e. $\sup_{\Lambda\in\Gamma}||\Lambda x|| < \infty$ for all $x \in X$. Using previous theorems, we conclude that there exists $M < \infty$ such that $||\Lambda x|| \leq M$ whenever $||x|| \leq 1$, for all $\Lambda \in \Gamma$. Hence it follows that $||\Lambda x|| \leq M||x||$ for all $x\in X$, $\Lambda \in \Gamma$.\footnote{Not so clear...}
+
+\end{frame}
+
+
+\section{Limits of continuous linear maps}
+\begin{frame}
+\frametitle{Limits of continuous linear maps}
+
+\begin{theorem}Suppose $X,Y$ are TVSs. Let $\{\Lambda_n\}$ be a sequence of continuous linear maps from $X$ to $Y$. Then,\begin{itemize}
+    \item If $C = \{x\in X\mid \{\Lambda_n x\}\text{ is Cauchy in }Y\}$ and $C$ is of the second category in $X$, then $C = X$.
+    \item If $L = \{x \in X \mid \Lambda x := \lim_{n\to \infty}\Lambda_n x \text{ exists}\}$ and if $L$ is of the second category in $X$, and $Y$ is an $F$-space, then $L = X$ and $\Lambda$ is continuous.
+\end{itemize}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Limits of continuous linear maps}
+\begin{proof}\renewcommand{\qedsymbol}{}
+        (a) Cauchy sequences are bounded, so we may apply the Banach-Steinhaus theorem to the family $\{\Lambda_n\}$ and conclude that $\{\Lambda_n\}$ is equicontinuous. It is clear that $C$ is a subspace of $X$. However, if we assume that $\overline{C}$ is a \textit{proper} subspace of $X$, it must have empty interior, thus being of the first category. Since $C \subset \overline{C}$, it follows that $C$ is also of the first category, which is a contradiction to what we assumed. Therefore $\overline{C}$ must be $X$, i.e. $C$ is dense in $X$. Now we must show that $C=X$. We show this by showing $X \subset C$. 
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{Limits of continuous linear maps}
+\begin{proof}
+    Fix some $x \in X$. Let $W$ be a neighborhood of $0_Y$. Recall the definition of equicontinuity; since $\{\Lambda_n\}$ is equicontinuous, there is a neighborhood $V$ of $0_X$ such that $\Lambda_n(V)\subset W$ for $n = 1,2,3,\ldots$. Also since $C$ is dense in $X$, $C \cap (x+V)$ must be nonempty. Thus pick some $x^\prime \in C \cap (x+V)$, and choose $n,m$ large enough that $\Lambda_n x^\prime - \Lambda_m x^\prime \in W$. Also note that the following holds: \[(\Lambda_n - \Lambda_m)x = \Lambda_n(x-x^\prime) + (\Lambda_n-\Lambda_m)x^\prime + \Lambda_m(x^\prime-x)\] Since $x-x^\prime \in V$ and we have $\Lambda_n(V) \subset W$ for all $n$, we may conclude that $\Lambda_n x - \Lambda_m x \in W+W+W$. Thus $\{\Lambda_n x\}$ is a Cauchy sequence in $Y$, which implies $x \in C$. Therefore, $X \subset C$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{Limits of continuous linear maps}
+\begin{proof}
+    (b) Recall the definition of a $F$-space.\footnote{Topology is induced by a complete invariant metric} Therefore all Cauchy sequences of $Y$ converge in $Y$, implying $L = C$. Hence by (a), we have $L = X$. Suppose $V,W$ are as in the proof of (a). Then $\Lambda_n(V) \subset W$ holds for all $n$, which implies $\Lambda(V) \subset \overline{W}$. Therefore $\Lambda$ is continuous.\footnote{Why..????}
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{A corollary}
+\begin{theorem}
+    If $\{\Lambda_n\}$ is a sequence of continuous linear mappings from an $F$-space $X$ into a TVS $Y$, and if $\Lambda x = \lim_{n \to \infty}\Lambda_n x$ exists for all $x \in X$, then $\Lambda$ is continuous.
+\end{theorem}
+\end{frame}
+\begin{frame}
+\frametitle{A corollary}
+\begin{proof}
+    Note that $\{\Lambda_n\}$ is equicontinuous by Thm 2.6. Choose neighborhoods of $0_X$, $0_Y$ as $V, W$, respectively, such that $\Lambda_n(V) \subset W$ for all $n$. Thus $\Lambda(V) \subset \overline{W}$, so $\Lambda$ is continuous.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{A variant of the Banach-Steinhaus theorem}
+This variant of the Banach-Steinhaus theorem applies the category argument to a \textit{compact set}.
+\begin{theorem}
+    Suppose $X,Y$ are TVSs. Let $K \subset X$ be a compact convex set. $\Gamma$ is a collection of continuous linear mappings $X \to Y$. Suppose the orbits \[\Gamma(x) = \{\Lambda x \mid \Lambda \in \Gamma\}\] are bounded in $Y$ for all $x \in K$. Then, there exists a bounded set $B \subset Y$ such that $\Lambda(K) \subset B$ for all $\Lambda \in \Gamma$.
+\end{theorem}
+\end{frame}
+\begin{frame}
+\frametitle{A variant of the Banach-Steinhaus theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    Let $B = \bigcup_{x\in K}\Gamma(x)$. Pick balanced neighborhoods $W, U$ of $0_Y$ such that $\overline{U} + \overline{U} \subset W$. Put $E := \bigcap_{\Lambda \in \Gamma}\Lambda^{-1}(\overline{U})$. If $x \in K$, then $\Gamma(x) \in nU$ for some $n$, so $x \in nE$. Therefore, $K = \bigcup_{n=1}^\infty (K \cap nE)$. If $K \cap nE$ (which is closed) has empty interior in $K$ for all $n$, then each must be of the first category, hence $K$ must be of the first category. However, this is contradictory to our assumption that $K$ is a compact convex set, thus of the second category. Therefore for some $n$, $K\cap nE$ must have nonempty interior relative to $K$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{A variant of the Banach-Steinhaus theorem}
+\begin{proof}
+    Now we fix $n$ such that $K \cap nE$ has a nonempty interior in $K$. Pick some $x_0 \in (K\cap nE)^\circ$. Also choose a balanced neighborhood $V$ of $0_X$ such that $K \cap (x_0+V)\subset nE$.\footnote{Note that this is possible since we have chosen an interior point.} Now, fix a $p>1$ such that $K \subset x_0 + pV$.\footnote{This is possible since $K$ is compact.} Choose any $x \in K$, and let $z = (1-p^{-1})x_0 + p^{-1}x$. $z$ is in $K$ since by assumption, $K$ is convex. Also note that $z - x_0 = p^{-1}(x-x_0) \in V$, hence $z \in x_0 + V \subset nE$. Since $\Lambda(nE) \subset n\overline{U}$ for all $\Lambda \in \Gamma$ and since $x = pz-(p-1)x_0$, we have $\Lambda x = pn\overline{U}-(p-1)n\overline{U} \subset pn(\overline{U}+\overline{U})\subset pnW$. Recall how we defined $B$. Thus $B \subset pnW$, so $B$ is bounded.
+\end{proof}
+\end{frame}
+
+
+\section{The Open Mapping Theorem}
+\begin{frame}
+\frametitle{The open mapping theorem}
+\begin{theorem} (Open mapping theorem) Suppose $\Lambda : X \to Y$ is continuous and linear where $X$ is an $F$-space and $Y$ is a TVS. If $\Lambda(X)$ is of the second category in $Y$, then $\Lambda$ is an open mapping, and $Y$ is an $F$-space.
+\end{theorem}
+\end{frame}
+\begin{frame}
+\frametitle{The Open Mapping Theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    Let $V$ be a neighborhood of $0_X$. We must show that $\Lambda(V)$ contains a neighborhood of $0_Y$.\newline Since we assumed $X$ is an $F$-space, let $d$ be an invariant metric on $X$ compatible with $\mathcal{T}_X$. Define $V_n = \{x \mid d(x,0)<2^{-n}r\}$ for $n = 0,1,2,\ldots$ where $r>0$ is chosen such that $V_0 \subset V$. We will prove that for some neighborhood $W$ of $0_Y$, $W \subset \overline{\Lambda(V_1)}\subset\Lambda(V)$ holds.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Open Mapping Theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    Note that $V_1 \supset V_2 - V_2$. This implies \[\overline{\Lambda(V_1)}\supset\overline{\Lambda(V_2)-\Lambda(V_2)}\supset\overline{\Lambda(V_2)}-\overline{\Lambda(V_2)}\] If we show $\overline{\Lambda(V_2)}$ has nonempty interior, then we can prove $W \subset \overline{\Lambda(V_1)}$.\footnote{How?} Since $V_2$ is a neighborhood of $0_X$, we have $\Lambda(X) = \bigcup_{k=1}^\infty k\Lambda(V_2)$.\footnote{Why?} Therefore, at least one $k\Lambda(V_2)$ is of the second category in $Y$. Since $y \mapsto ky$ is a homeomorphism of $Y$ to itself, $\Lambda(V_2)$ is also of the second category in $Y$. Therefore its closure must have nonempty interior. Thus we have proved $W \subset \overline{\Lambda(V_1)}$. Now we must prove $\overline{\Lambda(V_1)} \subset \Lambda(V)$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Open Mapping Theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    To prove $\overline{\Lambda(V_1)}\subset\Lambda(V)$, fix $y_1 \in \overline{\Lambda(V_1)}$. Assume $n \geq 1$ and $y_n$ is chosen in $\overline{\Lambda(V_n)}$. Since $\overline{\Lambda(V_{n+1})}$ contains a neighborhood of $0_Y$, we have that $(y_n - \overline{\Lambda(V_{n+1})}) \cap \Lambda(V_n) \neq \emptyset$. Therefore there exists some $x_n \in V_n$ such that $\Lambda x_n \in y_n - \overline{\Lambda(V_{n+1})}$. If you put $y_{n+1} = y_n - \Lambda x_n$, then $y_{n+1} \in \overline{\Lambda(V_{n+1})}$. Thus we may find a sequence $y_n$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Open Mapping Theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    Since $d(x_n,0) < 2^{-n}r$ for $n = 1,2,3,\ldots$, the sum $x_1 + \cdots + x_n$ forms a Cauchy sequence. Since $X$ is complete, this converges to some $x \in X$ such that $d(x,0) < r$. Therefore $x \in V$. Also, $\sum_{n=1}^m\Lambda x_n = y_1 - y_{m+1}$, and $y_{m+1} \to 0$ as $m \to \infty$, so we conclude that $y_1 = \Lambda x \in \Lambda(V)$. This proves that $\Lambda$ is an open mapping.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The Open Mapping Theorem}
+\begin{proof}
+    Finally, we must show that $Y$ is an $F$-space. To do this, we show that $Y$ is homeomorphic to some $F$-space. Theorem 1.41 shows that $X/N$ is an $F$-space if $N$ is the kernel of $\Lambda: X \to Y$. Thus we define $f: X/N \to Y$ as $f(x+N) = \Lambda x$ for $x \in X$. Hence, $f$ is an isomorphism. Suppose $V\subset Y$ is open. Then we have $f^{-1}(V) = \pi(\Lambda^{-1}(V))$ where $\pi$ is the canonical projection. Since $\pi$ is an open map, it is clear that $f$ is continuous. Conversely, assume that $E \subset X/N$ is open. Then $f(E) = \Lambda(\pi^{-1}(E))$ which is open, thus $f$ is an open map. Therefore, $f$ is a homeomorphism between $X/N$ and $Y$, thus $Y$ is an $F$-space.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{Some corollaries of the open mapping theorem}
+\begin{corollary}
+    \begin{itemize}
+        \item[(a)] If $\Lambda$ is a continuous linear mapping of an $F$-space $X$ onto an $F$-space $Y$, then $\Lambda$ is open.
+        \item[(b)] If $\Lambda$ satisfies (a) and is injective, then $\Lambda^{-1} : Y \to X$ is continuous.
+        \item[(c)] If $X,Y$ are Banach spaces, and if $\Lambda: X \to Y$ is continuous, linear, bijective, then there exist positive real numbers $a$ and $b$ such that $a||x|| \leq ||\Lambda x|| \leq b||x||$ for all $x\in X$.
+        \item[(d)] If $\mathcal{T}_1 \subset \mathcal{T}_2$ are vector topologies on $X$, and if both $(X,\mathcal{T}_1)$ and $(X,\mathcal{T}_2)$ are $F$-spaces, then $\mathcal{T}_1 = \mathcal{T}_2$.
+    \end{itemize}
+\end{corollary}
+\end{frame}
+\begin{frame}
+\frametitle{Some corollaries of the open mapping theorem}
+\begin{proof}
+    (a) follows from the open mapping theorem and Baire's theorem. (b) is an immediate consequence of (a). (c) follows from (b), since the inequalities express the continuity of $\Lambda$ and $\Lambda^{-1}$. (d) is obtained by applying (b) to the identity mapping $\iota : (X,\mathcal{T}_1) \to (X,\mathcal{T}_2)$. 
+\end{proof}
+\end{frame}
+
+\section{The Closed Graph Theorem}
+\begin{frame}
+\frametitle{Graphs of functions}
+\begin{definition}
+    If $X,Y$ are sets, and $f: X \to Y$, then the \textbf{graph} of $f$ is the set of all points $(x,f(x)) \in X\times Y$. If $X,Y$ are topological spaces, then $X \times Y$ is given the product topology. In this case, if $f : X \to Y$ is continuous, then its graph is closed in $X \times Y$. For linear mappings between $F$-spaces, this necessary condition is also sufficient.
+\end{definition}
+\end{frame}
+\begin{frame}
+\frametitle{Graphs of functions}
+\begin{theorem}
+    If $X$ is a topological space, $Y$ is Hausdorff, and $f: X \to Y$ is continuous, then the graph $G$ of $f$ is closed in $Y$.
+\end{theorem}
+\begin{proof}
+    Let $\Omega$ denote the complement of $G$ in $X \times Y$. Fix some $(x_0,y_0)\in\Omega$. Then it is clear that $y_0 \neq f(x_0)$. Therefore $y_0$ and $f(x_0)$ have disjoint neighbrhoods $V,W$, respectively, in $Y$. Since $f$ is continuous, $x_0$ has a neighborhood $U$ such that $f(U)\subset W$. Therefore, $(x_0,y_0) \in U \times V \subset \Omega$. Therefore $\Omega$ is open.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{The closed graph theorem}
+\begin{theorem}
+    Suppose $X,Y$ are $F$-spaces, $\Lambda: X \to Y$ is linear, and its graph $G = \{(x,\Lambda x)\mid x \in X\}$ is closed in $X \times Y$. Then $\Lambda$ is continuous.
+\end{theorem}
+\begin{proof}
+    Note that $X\times Y$ is an $F$-space, with incucing metric \[d((x_1,y_1),(x_2,y_2)) = d_X(x_1,x_2) + d_Y(y_1,y_2)\] and obvious vector operations. Since $\Lambda$ is linear, $G$ is a subspace of $X\times Y$. Closed subsets of complete metric spaces are complete, so $G$ is an $F$-space. Now define $\pi_1 : G \to X$, $\pi_2 : X\times Y \to Y$ by $\pi_1(x,\Lambda x) = x$ and $\pi_2(x,y) = y$. $\pi_1$ is a continuous linear bijective map of $G$ to $X$. By the open mapping theorem, $\pi_1^{-1}: X \to G$ is continuous, therefore $\Lambda = \pi_2 \circ \pi_1^{-1}$ is continuous.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{How to verify $G$ is closed}
+Often, the condition that $G$ is closed is verified by showing that if $\{x_n\}$ a sequence in $X$, and $x = \lim_{n\to\infty}x_n$ and $y = \lim_{n\to\infty}\Lambda x_n$ exist, then $y = \Lambda x$. This implies that $G$ is closed.
+\end{frame}
+\section{Bilinear Mappings}
+\begin{frame}
+\frametitle{Bilinear mappings}
+\begin{Definition}
+    Suppose $X,Y,Z$ are vector spaces and $B: X\times Y \to Z$. For each $x\in X$ and $y \in Y$, associate the maps $B_x: Y\to Z$ and $B^y = X \to Z$ defined by $B_x(y) = B(x,y) = B^y(x)$. $B$ is \textbf{bilinear} if $B_x$ and $B_y$ are linear for all $x,y$.
+\end{Definition}
+\begin{definition}
+    If $X,Y,Z$ are TVSs and if every $B_x, B^y$ is continuous, then $B$ is \textbf{separately continuous}.
+\end{definition}
+Note that if $B$ is continuous then $B$ is separately continuous. We study when the converse holds, i.e. when $B$ being separately continuous implies continuity.
+\end{frame}
+\begin{frame}
+\frametitle{Bilinear mappings}
+\begin{theorem}
+    Suppose $B:X\times Y \to Z$ is bilinear, and separately continuous. Suppose $X$ is an $F$-space and $Y,Z$ are TVSs. Then $B(x_n,y_n) \to B(x_0,y_0)$ whenever $x_n\to x_0$ and $y_n\to y_0$. If $Y$ is metrizable, it follows that $B$ is continuous.
+\end{theorem}
+\begin{proof}\renewcommand{\qedsymbol}{}
+    Let $U,W$ be neighborhoods of $0_Z$ such that $U+U \subset W$. Define $b_n(x) = B(x,y_n)$. Since $B$ is continuous as a function of $y$, we have $\lim_{n\to\infty}b_n(x) = B(x,y_0)$ for all $x \in X$. Therefore $\{b_n(x)\}$ is a bounded subset of $Z$ for each $x$. Since each $b_n$ is a continuous linear mapping of the $F$-space $X$, from the Banach-Steinhaus theorem it follows that $\{b_n\}$ is equicontinuous. Hence there exists a neighborhood $V$ of $0_X$ such that $b_n(V) \subset U$.
+\end{proof}
+\end{frame}
+\begin{frame}
+\frametitle{Bilinear mappings}
+\begin{proof}
+    Also note that $B(x_n,y_n) - B(x_0,y_0) = b_n(x_n-x_0) + B(x_0,y_n-y_0)$. If $n$ is large enough, then $x_n \in x_0 + V$ so that $b_n(x_n-x_0) \in U$, and $B(x_0,y_n-y_0) \in U$ since $B$ is continuous in $y$ and $B(x_0,0) = 0$. Hence $B(x_n,y_n) - B(x_0,y_0) \in U+U \subset W$ for large enough $n$. \newline\newline Now, suppose $Y$ is metrizable. Then so is $X\times Y$, so the continuity of $B$ follows from what we proved.
+\end{proof}
+\end{frame}
+\end{document}

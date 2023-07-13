@@ -1,0 +1,23 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}  % Select your favorite theme
+\title{Convexity}
+\author{Chapter 3}
+\institute{Functional Analysis}
+\date{\today}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\section{The Hahn-Banach Theorems}
+\begin{frame}
+\frametitle{Dual space}
+\begin{definition}
+    The \textbf{dual space} of a TVS $X$ is the vector space $X^*$ whose elements are the continuous linear functionals on $X$.
+\end{definition}
+Note that addition and scalar multiplication are defined in $X^*$ by $(\Lambda_1 + \Lambda_2)x = \Lambda_1 x + \Lambda_2 x$ and $(\alpha\Lambda)x = \alpha \cdot \Lambda x$. Thus it is clear that $X^*$ is indeed a vector space.
+\end{frame}
+\begin{frame}
+\frametitle{Some terminology}
+An additive functional $\Lambda$ on a complex vector space $X$ is called real-linear (resp. complex-linear) if $\Lambda(\alpha x) = \alpha \Lambda x$ for all $x \in X$ and for every real (resp. complex) scalar $\alpha$. \newline\newline Note that if $u$ is the real part of a complex-linear functional $f$ on $X$, then $u$ is real-linear and $f(x) = u(x) - iu(x)$ because $z = \text{Re}z - i\text{Re}(iz)$ for all $z\in \mathbb{C}$. Conversely, if $u:X \to \mathbb{R}$ is real-linear on a complex vector space $X$ and if $f$ is defined the same, then $f$ is also complex-linear. \newline\newline Thus we may conclude that a complex-linear functional on $X$ is an element of $X^*$ if and only if its real part is continuous, and that every continuous real-linear $u:X \to \mathbb{R}$ is the real part of a unique $f\in X^*$.
+\end{frame}
+\end{document}
